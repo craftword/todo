@@ -1,0 +1,33 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "Todo list App",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node server.js" ,
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/craftword/todo.git"
+  },
+  "keywords": [
+    "App"
+  ],
+  "author": "Abimbola Olaitan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/craftword/todo/issues"
+  },
+  "homepage": "https://github.com/craftword/todo#readme",
+  "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
+    "express": "^4.16.4",
+    "next": "^8.0.3",
+    "preact": "^8.4.2",
+    "react": "^16.8.4",
+    "react-dom": "^16.8.4"
+  }
+}
