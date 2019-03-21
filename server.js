@@ -1,6 +1,7 @@
 const express = require('express')
 const next = require('next')
 const apiRouter = require('./route')
+const cors = require('cors')
 
 
 const dev = process.env.NODE_ENV !== 'production'
@@ -12,6 +13,7 @@ const handle = app.getRequestHandler()
 app.prepare()
 .then(() => {
   const server = express()
+  server.use(cors())
   server.use('/api/listItems', apiRouter);  
   
   server.get('*', (req, res) => {
