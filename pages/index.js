@@ -21,7 +21,7 @@ import fetch from 'isomorphic-unfetch'
 const styles = theme => ({
   root: {
     width: '100%',
-    maxWidth: 600,
+    maxWidth: 800,
     backgroundColor: theme.palette.background.paper,
   },
   chip: {
@@ -50,7 +50,7 @@ const styles = theme => ({
     margin: theme.spacing.unit,
   },
   table: {
-    minWidth: 400,
+    minWidth: 300,
   },
   margin: {
     margin: theme.spacing.unit,
@@ -59,18 +59,7 @@ const styles = theme => ({
 
 
 class MainContent extends React.Component {
-  static async getInitialProps() {
-    const res = await fetch('http://localhost:3000/api/listItems')
-    const rows = await res.json()
-    return { rows }
-  }
-  componentWillMount() {
-    this.setState({
-      rows: rows
-    })
-    console.log(rows)
-  }
-  constructor(props) {
+   constructor(props) {
     super(props);
     
     this.state = {
@@ -81,6 +70,18 @@ class MainContent extends React.Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.removeItem = this.removeItem.bind(this);  }
 
+  static async getInitialProps() {
+    const res = await fetch('http://localhost:3000/api/listItems')
+    const rows = await res.json()
+    return { rows }
+  }
+  componentWillMount() {
+    this.setState({
+      rows: this.props.rows
+    })
+    console.log(this.props.rows)
+  }
+ 
 
 handleChange(e) {
   this.setState({
@@ -110,15 +111,15 @@ removeItem(itemIndex) {
   render() {
     const { classes } = this.props;
      const { itemname, rows} = this.state;
-     console.log(rows);
+     //console.log(rows);
     return (
       <div>
-         <DenseAppBar />
+        <DenseAppBar />
         <Grid container spacing={24}>
             <Grid item xs={3}>
                 
             </Grid>
-            <Grid item xs={6}>
+            <Grid item xs={7}>
               <div className={classes.root}>
                 <div className={classes.section1}>
                   <Grid container alignItems="center">
@@ -128,7 +129,7 @@ removeItem(itemIndex) {
                       </Typography>
                     </Grid>
                   </Grid>
-                    <div className={classes.container}>
+                     <div className={classes.container}>
                         <form ref="form" onSubmit={this.onSubmit} className="form-inline">
                               <Input
                                   className={classes.input}
@@ -175,7 +176,7 @@ removeItem(itemIndex) {
                       </Table>
                   </Paper>
                 </div>
-                <div className={classes.section3}>
+                 <div className={classes.section3}>
                     <Typography>
                         Produced By Abimbola Olaitan &copy;2019
                       </Typography> 
